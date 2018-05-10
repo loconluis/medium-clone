@@ -28,7 +28,7 @@ UserSchema.methods.follow = function (userID) {
   
   return this.save()
 }
-ArticleSchema.methods.addFollower = function (follower) {
+UserSchema.methods.addFollower = function (follower) {
   this.follower.push(follower)
 }
 

@@ -5,7 +5,7 @@ const User = require('../models/User')
 const fs = require('fs')
 const cloudinary = require('cloudinary')
 
-export const addArticle = (req, res, next) => {
+const addArticle = (req, res, next) => {
   // destructuring the request body
   let { text, title, claps, description } = req.body
   // options for uploader
@@ -34,7 +34,7 @@ export const addArticle = (req, res, next) => {
   }
 }
 // Save a one article
-export const saveArticle = (obj) => {
+const saveArticle = (obj) => {
   new Article(obj).save((err, article) => {
     if (err) {
       res.send(err)
@@ -50,7 +50,7 @@ export const saveArticle = (obj) => {
   })
 }
 // getAll the articles
-export const getAll = (req, res, next) => {
+const getAll = (req, res, next) => {
   Article.find(req.params.id)
     .populate('author')
     .populate('comments.author').exec((err, article) => {
@@ -65,14 +65,14 @@ export const getAll = (req, res, next) => {
     })
 }
 // clap an article
-export const clapArticle = (req, res, next) => {
+const clapArticle = (req, res, next) => {
   Article.findById(req.body.article_id)
     .then(article => article.clap())
     .then((res) => res.json({ msg: "Done" }))
     .catch(next)
 }
 // comment an article
-export const commentArticle = (req, res, next) => {
+const commentArticle = (req, res, next) => {
   Article.findById(req.body.article_id)
     .then(article => article.comment({
       author: req.body.authorID,
@@ -82,7 +82,7 @@ export const commentArticle = (req, res, next) => {
     .catch(next)
 }
 // get one Article 
-export const getArticle = (req, res, next) => {
+const getArticle = (req, res, next) => {
   Article.findById(req.params.id)
     .populate('author')
     .populate('comments.author').exec((err, article) => {
