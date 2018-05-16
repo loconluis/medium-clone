@@ -45,3 +45,10 @@ const getUserProfile = (req, res, next) => {
     })
     .catch(e => console.log('err', e))
 }
+
+module.exports = {
+  getUser,
+  getUserProfile,
+  addUser,
+  followUser
+}

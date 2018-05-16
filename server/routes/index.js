@@ -1,5 +1,5 @@
 const articleRoutes = require('./article')
-// const userRoute = require('./user')
+const userRoute = require('./user')
 
 // export the JSON routes
-module.exports = { articleRoutes }
+module.exports = { articleRoutes, userRoute }
