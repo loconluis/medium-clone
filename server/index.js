@@ -29,5 +29,6 @@ app.use(cors())
 app.use(bodyParse.json())
 app.use(helmet())
 app.use('/api', _routes.articleRoutes)
+app.use('/api', _routes.userRoute)
 // start server
 app.listen(PORT, () => console.log(`Server start on PORT ${PORT}`))
