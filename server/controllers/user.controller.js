@@ -22,7 +22,7 @@ const getUser = (req, res, next) => {
       } else if (!user) {
         res.send(400)
       } else {
-        res.send(user)
+        res.sendStatus(200).send(user)
       }
       next()
     })
